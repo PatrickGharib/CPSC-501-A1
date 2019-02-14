@@ -5,43 +5,43 @@
  * Code from cpsc 223 assignment
  *
  * Player class
+ * 
+ * 501-v1.1 
+ * removed unsused variables/setters/getters
+ * 
+ * 501-v 1.2 
+ * renamed variables for transparency
  */
 import java.util.*;
 public class Player {
     //Player attributes
-    private int hp;
-    private int str;
-    private int intel;
-    private int evs;
-  
-
+    private int health;
+    private int strength;
+    private int intelligence;
+    private int evade;
     //Constructor
     public Player() {
-        this.hp = -1;
-        this.str = -1;
-        this.intel = -1;
-        this.evs = -1;
-
+        this.health = -1;
+        this.strength = -1;
+        this.intelligence = -1;
+        this.evade = -1;
     }
     //Set functions for player attributes
-    public void sethp(int hp){ this.hp = hp; }
-    public void setstr(int str){ this.str = str; }
-    public void setintel(int intel){ this.intel = intel; }
-    public void setevs(int evs){this.evs =evs;}
-
-
+    public void setHealth(int health){ this.health = health; }
+    public void setStrength(int strength){ this.strength = strength; }
+    public void setIntelligence(int intelligence){ this.intelligence = intelligence; }
+    public void setEvade(int evade){this.evade =evade;}
     //Get functions for player attributes
-    public int gethp(){ return this.hp; }
-    public int getstr(){ return this.str ;}
-    public int getintel(){ return this.intel; }
-    public int getevs(){return this.evs;}
-    public char getPlayerClass(){ return this.playerClass; }
+    public int getHealth(){ return this.health; }
+    public int getStrength(){ return this.strength ;}
+    public int getIntelligence(){ return this.intelligence; }
+    public int getEvade(){return this.evade;}
     public void displayAttributes(){
         System.out.println( "\nPlayer \n"    +
-                "HP : " + this.hp + "\n" +
-                "STR: " + this.str + "\n" +
-                "INT: " + this.intel + "\n" +
-                "EVD: " + this.evs);
+                "HP : " + this.health + "\n" +
+                "STR: " + this.strength + "\n" +
+                "INT: " + this.intelligence + "\n" +
+                "EVD: " + this.evade);
 
     }
 }
