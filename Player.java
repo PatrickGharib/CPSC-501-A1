@@ -33,8 +33,8 @@ public class Player extends CharacterAttributes{
     public int getEvade(){return this.evade;}
     public void displayAttributes(){
         System.out.println( "\nPlayer \n"    +
-                "HP : " + this.health + "\n" +
-                "STR: " + this.strength + "\n" +
+                "HP : " + this.getHealth() + "\n" +
+                "STR: " + this.getStrength() + "\n" +
                 "INT: " + this.intelligence + "\n" +
                 "EVD: " + this.evade);
 

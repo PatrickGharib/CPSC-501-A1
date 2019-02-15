@@ -39,7 +39,7 @@ public class Boss extends CharacterAttributes {
 	 * display boss's status
 	 */
 	public void displayAttributes() {
-        System.out.println ("\nFINAL BOSSMAN\n" + " HP: " + getHealth() + 
-                "\n" + "STR: " + getStrength() + "\n");
+        System.out.println ("\nFINAL BOSSMAN\n" + " HP: " + this.getHealth() + 
+                "\n" + "STR: " + this.getStrength() + "\n");
     }
 }
