@@ -11,29 +11,24 @@
  * 
  * 501-v 1.2 
  * renamed variables for transparency
+ * 501-v1.3
+ * moved strength and health to abstract class called Character Attributes
+ * 
  */
 import java.util.*;
-public class Player {
+public class Player extends CharacterAttributes{
     //Player attributes
-    private int health;
-    private int strength;
     private int intelligence;
     private int evade;
     //Constructor
     public Player() {
-        this.health = -1;
-        this.strength = -1;
         this.intelligence = -1;
         this.evade = -1;
     }
     //Set functions for player attributes
-    public void setHealth(int health){ this.health = health; }
-    public void setStrength(int strength){ this.strength = strength; }
     public void setIntelligence(int intelligence){ this.intelligence = intelligence; }
-    public void setEvade(int evade){this.evade =evade;}
+    public void setEvade(int evade){this.evade = evade;}
     //Get functions for player attributes
-    public int getHealth(){ return this.health; }
-    public int getStrength(){ return this.strength ;}
     public int getIntelligence(){ return this.intelligence; }
     public int getEvade(){return this.evade;}
     public void displayAttributes(){
