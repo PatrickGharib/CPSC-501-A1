@@ -60,8 +60,10 @@ public class Driver {
                 System.out.print("Enter a valid integer:");
             }
             //increase Health every 2 turns
+            
             if((turn%2) == 0 && player.getHealth() > 0) {
                player.healthBoost();
+               System.out.println("\nPlayer gets a whole 10 health every 2 turns\n");
             }
             turn++;
         }
