@@ -21,52 +21,17 @@ public class Driver {
         int choice = -1;
         System.out.println("Welcome to the game!");
         Scanner input = new Scanner(System.in);
-        while(true){
-            System.out.println( "1| Select Warrior Class\n" +
-                    "2| Select Mage Class\n" +
-                    "3| Select Thief Class" );
-            System.out.print("Enter a choice: ");
-            //check if integer input
-            while(!input.hasNextInt()){
-                input.next();
-                System.out.print("Enter a valid integer: ");
-            }
-            
-            choice = input.nextInt();
-
-            if(choice == 1){
-                //make a warrior
-                generateWarrior(player);
-                break;
-            }
-            else if(choice == 2){
-                //create mage
-                generateMage(player);
-                break;
-            }
-            else if(choice == 3){
-                //create thief
-                generateThief(player);
-                break;
-            }
-            else {
-                System.out.println("Out of range");
-            }
-        }
+        characterCreation(input, choice, player);
         player.displayAttributes();
-
-
         //spawn boss
         System.out.println("\nSpawning boss! Get Ready!");
         boss = new Boss(player);
-
         //keep playing while player and boss still alive
         while(player.getHealth() > 0 && boss.getHealth() > 0) {
             System.out.println("------------------------------");
             System.out.println("\nTURN: " + turn);
             boss.displayAttributes();
             player.displayAttributes();
-            System.out.println("NOTE: every 2 turns survived increases your HP");
 
             System.out.println("\n1| Physical Attack\n" +
                     "2| Magical Attack\n" +
@@ -133,25 +98,37 @@ public class Driver {
         }
 
     }
-    public static void generateWarrior(Player player){ 
-        Random random =  new Random();
-        player.setHealth(random.nextInt(5) + 15);
-        player.setStrength(random.nextInt(10) + 15);
-        player.setIntelligence(random.nextInt(5) + 5);
-        player.setEvade(random.nextInt(5) +5);
+    public static void characterCreation(Scanner input,int choice, Player player) {while(true){
+        System.out.println( "1| Select Warrior Class\n" +
+                "2| Select Mage Class\n" +
+                "3| Select Thief Class" );
+        System.out.print("Enter a choice: ");
+        //check if integer input
+        while(!input.hasNextInt()){
+            input.next();
+            System.out.print("Enter a valid integer: ");
+        }
+        
+        choice = input.nextInt();
+
+        if(choice == 1){
+            //make a warrior
+            player.generateWarrior(player);
+            break;
+        }
+        else if(choice == 2){
+            //create mage
+            player.generateMage(player);
+            break;
+        }
+        else if(choice == 3){
+            //create thief
+            player.generateThief(player);
+            break;
+        }
+        else {
+            System.out.println("Not an option SCRUB");
+        }
     }
-    public static void generateMage(Player player){
-        Random random =  new Random();
-        player.setHealth(random.nextInt(5) + 10);
-        player.setStrength(random.nextInt(5) + 5);
-        player.setIntelligence(random.nextInt(10) + 20);
-        player.setEvade(random.nextInt(5) + 5);
-    }
-    public static void generateThief(Player player){
-        Random random = new Random();
-        player.setHealth(random.nextInt(5) + 10);
-        player.setStrength(random.nextInt(5));
-        player.setIntelligence(random.nextInt(5) + 5);
-        player.setEvade(random.nextInt(10) + 15);
-    }
+}
 }
