@@ -39,12 +39,7 @@ public class Driver {
             }
             else if(choice == 2){
                 //create mage
-                Random random =  new Random();
-                player.setHealth(random.nextInt(5) + 10);
-                player.setStrength(random.nextInt(5) + 5);
-                player.setIntelligence(random.nextInt(10) + 20);
-                player.setEvade(random.nextInt(5) + 5);
-
+                generateMage(player);
                 break;
             }
             else if(choice == 3){
@@ -147,6 +142,12 @@ public class Driver {
         player.setIntelligence(random.nextInt(5) + 5);
         player.setEvade(random.nextInt(5) +5);
     }
-
+    public static void generateMage(Player player){
+        Random random =  new Random();
+        player.setHealth(random.nextInt(5) + 10);
+        player.setStrength(random.nextInt(5) + 5);
+        player.setIntelligence(random.nextInt(10) + 20);
+        player.setEvade(random.nextInt(5) + 5);
+    }
 
 }
