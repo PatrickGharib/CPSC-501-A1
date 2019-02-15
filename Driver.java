@@ -59,24 +59,20 @@ public class Driver {
             else {
                 System.out.print("Enter a valid integer:");
             }
-
             //increase Health every 2 turns
             if((turn%2) == 0 && player.getHealth() > 0) {
                player.healthBoost();
             }
             turn++;
         }
-
         if(player.getHealth() <= 0) {
             System.out.println("YOU DIED");
             if(turn <= 3)
                 System.out.println("lol git gud");
-
         }
         else if (boss.getHealth() <= 0) {
             System.out.printf("You won the game in %d turns!", turn);
         }
-
     }
     public static void characterCreation(Scanner input, int choice ,Player player) {while(true){
         System.out.println( "1| Select Warrior Class\n" +
@@ -88,7 +84,6 @@ public class Driver {
             input.next();
             System.out.print("Enter a valid integer: ");
         }
-        
         choice = input.nextInt();
 
         if(choice == 1){

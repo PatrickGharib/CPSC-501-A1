@@ -6,13 +6,16 @@ public abstract class CharacterAttributes{
  * abstract class to house shared attributes of Player and Boss classes
  * 
  */
+private int health;
+private int strength; 
+
 public CharacterAttributes(){
     this.strength = -1;
     this.health = -1;
     }
-public void setHealth(int health){this.health = health;}
-public void setStrength(int strength){this.strength = strength;}
 public int getHealth(){return this.health;}
 public int getStrength(){return this.strength;}
+public void setHealth(int health){this.health = health;}
+public void setStrength(int strength){this.strength = strength;}
 public abstract void displayAttributes();
 }

@@ -43,6 +43,7 @@ public class Boss extends CharacterAttributes {
         System.out.println ("\nFINAL BOSSMAN\n" + " HP: " + this.getHealth() + 
                 "\n" + "STR: " + this.getStrength() + "\n");
     }
+    
     public void counterAttack(Player player){
         Random random = new Random();
         int chanceToHit = random.nextInt(100);
