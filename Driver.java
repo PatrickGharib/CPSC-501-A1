@@ -21,7 +21,7 @@ public class Driver {
         int choice = -1;
         System.out.println("Welcome to the game!");
         Scanner input = new Scanner(System.in);
-        characterCreation(input, choice, player);
+        characterCreation(input,choice,player);
         player.displayAttributes();
         //spawn boss
         System.out.println("\nSpawning boss! Get Ready!");
@@ -98,7 +98,7 @@ public class Driver {
         }
 
     }
-    public static void characterCreation(Scanner input,int choice, Player player) {while(true){
+    public static void characterCreation(Scanner input, int choice ,Player player) {while(true){
         System.out.println( "1| Select Warrior Class\n" +
                 "2| Select Mage Class\n" +
                 "3| Select Thief Class" );
