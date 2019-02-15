@@ -4,11 +4,15 @@
  * Original @author Patrick Abou Gharib
  * Code from cpsc 223 assignment
  *
- *
+ * 501 -v1.1 
+ * renamed set and get methods to match player and boss
  * Driver class to run game
+ *
  */
 import java.util.*;
 public class Driver {
+
+    
     public static void main(String[] args) {
         //setup game stats
         Player player = new Player();
@@ -29,31 +33,27 @@ public class Driver {
             }
             choice = input.nextInt();
             if(choice == 1){
-                //create warrior
-                Random random =  new Random();
-                player.sethp(random.nextInt(5) + 15);
-                player.setstr(random.nextInt(10) + 15);
-                player.setintel(random.nextInt(5) + 5);
-                player.setevs(random.nextInt(5) +5);
+                //make a warrior
+                generateWarrior(player);
                 break;
             }
             else if(choice == 2){
                 //create mage
                 Random random =  new Random();
-                player.sethp(random.nextInt(5) + 10);
-                player.setstr(random.nextInt(5) + 5);
-                player.setintel(random.nextInt(10) + 20);
-                player.setevs(random.nextInt(5) + 5);
+                player.setHealth(random.nextInt(5) + 10);
+                player.setStrength(random.nextInt(5) + 5);
+                player.setIntelligence(random.nextInt(10) + 20);
+                player.setEvade(random.nextInt(5) + 5);
 
                 break;
             }
             else if(choice == 3){
                 //create thief
                 Random random = new Random();
-                player.sethp(random.nextInt(5) + 10);
-                player.setstr(random.nextInt(5));
-                player.setintel(random.nextInt(5) + 5);
-                player.setevs(random.nextInt(10) + 15);
+                player.setHealth(random.nextInt(5) + 10);
+                player.setStrength(random.nextInt(5));
+                player.setIntelligence(random.nextInt(5) + 5);
+                player.setEvade(random.nextInt(10) + 15);
                 break;
             }
             else {
@@ -68,7 +68,7 @@ public class Driver {
         boss = new Boss(player);
 
         //keep playing while player and boss still alive
-        while(player.gethp() > 0 && boss.gethp() > 0) {
+        while(player.getHealth() > 0 && boss.getHealth() > 0) {
             System.out.println("------------------------------");
             System.out.println("\nTURN: " + turn);
             boss.displayAttributes();
@@ -91,24 +91,24 @@ public class Driver {
 
 
             if(choice == 1) {
-                System.out.printf("\nYou did %d damage!\n", player.getstr());
-                boss.sethp(boss.gethp() - player.getstr());
+                System.out.printf("\nYou did %d damage!\n", player.getStrength());
+                boss.setHealth(boss.getHealth() - player.getStrength());
 
-                if(chanceToHit < boss.getdex()) {
-                    System.out.printf("The boss retaliates and does %d damage!\n", boss.getstr());
-                    player.sethp(player.gethp() - boss.getstr());
+                if(chanceToHit < boss.getAccuracy()) {
+                    System.out.printf("The boss retaliates and does %d damage!\n", boss.getStrength());
+                    player.setHealth(player.getHealth() - boss.getStrength());
                 }
                 else {
                     System.out.println("The boss missed its counterattack!");
                 }
             }
             else if(choice == 2) {
-                System.out.printf("\nYou did %d damage!\n", player.getintel());
-                boss.sethp(boss.gethp() - player.getintel());
+                System.out.printf("\nYou did %d damage!\n", player.getIntelligence());
+                boss.setHealth(boss.getHealth() - player.getIntelligence());
 
-                if(chanceToHit < boss.getdex()) {
-                    System.out.printf("The boss retaliates and does %d damage!\n", boss.getstr());
-                    player.sethp(player.gethp() - boss.getstr());
+                if(chanceToHit < boss.getAccuracy()) {
+                    System.out.printf("The boss retaliates and does %d damage!\n", boss.getStrength());
+                    player.setHealth(player.getHealth() - boss.getStrength());
                 }
                 else {
                     System.out.println("The boss missed its counterattack!\n");
@@ -122,25 +122,31 @@ public class Driver {
                 System.out.print("Enter a valid integer:");
             }
 
-            //increase hp every 2 turns
+            //increase Health every 2 turns
             if((turn%2) == 0) {
-                player.sethp(player.gethp() + 10);
+                player.setHealth(player.getHealth() + 10);
             }
             turn++;
         }
 
-        if(player.gethp() <= 0) {
+        if(player.getHealth() <= 0) {
             System.out.println("YOU DIED");
             if(turn <= 3)
                 System.out.println("lol git gud");
 
         }
-        else if (boss.gethp() <= 0) {
+        else if (boss.getHealth() <= 0) {
             System.out.printf("You won the game in %d turns!", turn);
         }
 
     }
-
+    public static void generateWarrior(Player player){ 
+        Random random =  new Random();
+        player.setHealth(random.nextInt(5) + 15);
+        player.setStrength(random.nextInt(10) + 15);
+        player.setIntelligence(random.nextInt(5) + 5);
+        player.setEvade(random.nextInt(5) +5);
+    }
 
 
 }
