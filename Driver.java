@@ -31,7 +31,9 @@ public class Driver {
                 input.next();
                 System.out.print("Enter a valid integer: ");
             }
+            
             choice = input.nextInt();
+
             if(choice == 1){
                 //make a warrior
                 generateWarrior(player);
@@ -44,11 +46,7 @@ public class Driver {
             }
             else if(choice == 3){
                 //create thief
-                Random random = new Random();
-                player.setHealth(random.nextInt(5) + 10);
-                player.setStrength(random.nextInt(5));
-                player.setIntelligence(random.nextInt(5) + 5);
-                player.setEvade(random.nextInt(10) + 15);
+                generateThief(player);
                 break;
             }
             else {
@@ -149,5 +147,11 @@ public class Driver {
         player.setIntelligence(random.nextInt(10) + 20);
         player.setEvade(random.nextInt(5) + 5);
     }
-
+    public static void generateThief(Player player){
+        Random random = new Random();
+        player.setHealth(random.nextInt(5) + 10);
+        player.setStrength(random.nextInt(5));
+        player.setIntelligence(random.nextInt(5) + 5);
+        player.setEvade(random.nextInt(10) + 15);
+    }
 }
