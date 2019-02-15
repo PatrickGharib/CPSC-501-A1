@@ -44,33 +44,13 @@ public class Driver {
             }
             choice =  input.nextInt();
 
-            Random random = new Random();
-            int chanceToHit = random.nextInt(100);
-
-
             if(choice == 1) {
-                System.out.printf("\nYou did %d damage!\n", player.getStrength());
-                boss.setHealth(boss.getHealth() - player.getStrength());
-
-                if(chanceToHit < boss.getAccuracy()) {
-                    System.out.printf("The boss retaliates and does %d damage!\n", boss.getStrength());
-                    player.setHealth(player.getHealth() - boss.getStrength());
-                }
-                else {
-                    System.out.println("The boss missed its counterattack!");
-                }
+                player.attack(1, boss);
+                boss.counterAttack(player);
             }
             else if(choice == 2) {
-                System.out.printf("\nYou did %d damage!\n", player.getIntelligence());
-                boss.setHealth(boss.getHealth() - player.getIntelligence());
-
-                if(chanceToHit < boss.getAccuracy()) {
-                    System.out.printf("The boss retaliates and does %d damage!\n", boss.getStrength());
-                    player.setHealth(player.getHealth() - boss.getStrength());
-                }
-                else {
-                    System.out.println("The boss missed its counterattack!\n");
-                }
+                player.attack(2, boss);
+                boss.counterAttack(player);
             }
             else if(choice == 3) {
                 System.out.println("quitting game...");
@@ -81,8 +61,8 @@ public class Driver {
             }
 
             //increase Health every 2 turns
-            if((turn%2) == 0) {
-                player.setHealth(player.getHealth() + 10);
+            if((turn%2) == 0 && player.getHealth() > 0) {
+               player.healthBoost();
             }
             turn++;
         }

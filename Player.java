@@ -37,6 +37,40 @@ public class Player extends CharacterAttributes{
                 "STR: " + this.getStrength() + "\n" +
                 "INT: " + this.intelligence + "\n" +
                 "EVD: " + this.evade);
+    }
+    
+    public void generateThief(Player player){
+        Random random = new Random();
+        player.setHealth(random.nextInt(5) + 10);
+        player.setStrength(random.nextInt(5));
+        player.setIntelligence(random.nextInt(5) + 5);
+        player.setEvade(random.nextInt(10) + 15);
+    }
+    public void generateWarrior(Player player){ 
+        Random random =  new Random();
+        player.setHealth(random.nextInt(5) + 15);
+        player.setStrength(random.nextInt(10) + 15);
+        player.setIntelligence(random.nextInt(5) + 5);
+        player.setEvade(random.nextInt(5) +5);
+    }
+    public void generateMage(Player player){
+        Random random =  new Random();
+        player.setHealth(random.nextInt(5) + 10);
+        player.setStrength(random.nextInt(5) + 5);
+        player.setIntelligence(random.nextInt(10) + 20);
+        player.setEvade(random.nextInt(5) + 5);
+    }
+    public void attack(int attackType, Boss boss){
+        if (attackType == 1){
+            boss.setHealth(boss.getHealth()-this.getStrength());
+            System.out.printf("\nYou did %d damage!\n", this.getStrength());
 
+        }else{
+            boss.setHealth(boss.getHealth()-this.getIntelligence());
+            System.out.printf("\nYou did %d damage!\n", this.getIntelligence());
+        }
+    }
+    public void healthBoost(){
+        this.setHealth(this.getHealth() + 10);
     }
 }

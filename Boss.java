@@ -13,6 +13,7 @@
  * 
  * Boss class
  */
+import java.util.*;
 public class Boss extends CharacterAttributes {
 
     //boss attributes
@@ -41,5 +42,13 @@ public class Boss extends CharacterAttributes {
 	public void displayAttributes() {
         System.out.println ("\nFINAL BOSSMAN\n" + " HP: " + this.getHealth() + 
                 "\n" + "STR: " + this.getStrength() + "\n");
+    }
+    public void counterAttack(Player player){
+        Random random = new Random();
+        int chanceToHit = random.nextInt(100);
+        if(chanceToHit < this.getAccuracy()){
+            player.setHealth(player.getHealth()-this.getStrength());
+            System.out.printf("The Boss fights back, Striking you for %d damage!\n", this.getStrength());
+        }else{System.out.printf("The Boss didnt pay attention and missed their attack\n");}
     }
 }
